@@ -218,7 +218,8 @@ var pHash = "";
             res.contentType("json");
             if(uid == adminUID){
                 curPres = req.body.presentation;
-                io.emit("pres_chosen");
+                io.emit("pres_change");
+                io.emit("move", [0, 0]);
                 res.status(200).end(JSON.stringify([ "All OK!" ]));
                 v ? console.log(chalk`{blue [i]} Presentation set: {yellow presentation}{gray :} {blue ${curPres}}`) : "";
             } else {

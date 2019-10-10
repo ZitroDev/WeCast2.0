@@ -14,4 +14,4 @@ socket.on("pres_change", () => {
 });
 window.onbeforeunload = function(){
     socket.emit("disconnect_user");
-}    
+}

@@ -30,6 +30,9 @@ window.onbeforeunload = function(){
     socket.emit("disconnect_admin", adminMSG);
 } 
 
+socket.on("pres_change", () => {
+    window.location.reload();
+});
 
 Reveal.addEventListener( "slidechanged", function(e) {
     isAdmin ? socket.emit("move", [e.indexh, e.indexv]): "";
