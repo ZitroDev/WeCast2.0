@@ -278,8 +278,6 @@ var pHash = "";
             }
         })
 
-        app.use(require("./router.js"));
-
         app.use("/pages", express.static(path.resolve(__dirname, "pages")));
         app.use("/admint/view/", express.static(path.resolve(__dirname, "static")));
         app.use("/", express.static(path.resolve(__dirname, "static")));
