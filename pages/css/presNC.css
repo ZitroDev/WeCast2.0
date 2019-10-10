@@ -1,0 +1,21 @@
+body{
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(#888888, #555555)
+}
+
+div{
+    display: table-cell;
+    vertical-align: middle;
+    width: 100vw;
+    height: 100vh;
+}
+
+p{
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 2em;
+    font-family: 'Libre Baskerville', serif;
+    color: gainsboro;
+}

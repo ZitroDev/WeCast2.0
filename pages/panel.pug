@@ -1,0 +1,79 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport' content='width=device-width, initial-scale=1.0')
+  meta(http-equiv='X-UA-Compatible' content='ie=edge')
+  script(src='https://code.jquery.com/jquery-3.4.1.min.js' integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js' integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1' crossorigin='anonymous')
+  script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js' integrity='sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM' crossorigin='anonymous')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js')
+  script(src='https://www.chartjs.org/dist/2.8.0/Chart.min.js')
+  link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
+  link(rel='stylesheet' href='/admint/style.css')
+  script(src='/admint/script.js')
+  title Admint | Control Panel
+h1#sys
+.charts
+  .row
+    .chart-rect.el
+      canvas#chart-0
+    .chart-rect.el
+      canvas#chart-1
+    .chart-sq.el
+      canvas#chart-3
+  .row
+    .list-group.el
+      for pres in presentations
+        a.list-group-item.list-group-item-action.flex-column.align-items-start(href='#' data-text=pres.name.toLowerCase())
+          .d-flex.w-100.justify-content-between
+            h5.mb-1 #{pres.name}
+            small.text-muted #{pres.time}
+    .chart-rect.el
+      canvas#chart-2
+script.
+  if($.cookie("uid")==undefined){
+    window.location.pathname = "/login/"
+  }
+  var net = load = true;
+  function fLoad(){
+    if(load){
+      getLoad((err) => {
+        if(err instanceof Error){
+          load = false;
+          throw err;
+        }
+      });
+    }
+  }
+  function fNet(){
+    if(net){
+      getNetStat((err) => {
+        if(err instanceof Error){
+          net = false;
+          throw err;
+        }
+      });
+    }
+  }
+  getLoad((err) => {
+    if(err instanceof Error){
+      throw err;
+    } else {
+      setInterval(fLoad, 200);
+      getNetStat((err) => {
+        if(err instanceof Error){
+          throw err;
+        } else {
+          setInterval(fNet, 5000);
+        }
+      });
+    }
+  });
+  
+  var chartLoad = new Chart('chart-0', opts1);
+  var chartMem = new Chart('chart-1', opts2);
+  var chartNet = new Chart('chart-2', opts3);
+  var chartDisk = new Chart("chart-3", opts4);
+  $(".list-group-item").click((e) => {
+    setPresentation(e.currentTarget.dataset.text);
+  })

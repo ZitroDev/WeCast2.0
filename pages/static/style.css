@@ -1,0 +1,53 @@
+.chart-rect {
+    width: 30vw;
+    height: 40vh;
+}
+
+.chart-sq {
+    width: 33vw;
+}
+
+.charts {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+.row {
+    flex-direction: row;
+    display: flex;
+    align-content: center;
+    align-items: center;
+    margin: 0 2vh;
+}
+
+body {
+    margin: 0;
+    text-align: center;
+    background-color: #12263f;
+    color: white;
+}
+
+.el{
+    padding: 0 2vw;
+}
+
+.list-group{
+    max-height: 39vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.list-group::-webkit-scrollbar{
+    width: 1em;
+    height: 3.5em;
+}
+
+.list-group::-webkit-scrollbar-thumb{
+    background: #355861;
+}
+
+.mb-1{
+    margin-right: 1vw;
+}

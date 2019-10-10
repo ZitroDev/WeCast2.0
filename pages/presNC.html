@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/pages/css/presNC.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script>
+        const socket = io('http://localhost');
+        socket.on("connect_success", (bool) => {
+            if(bool){
+                console.log("[+] Connected successfully!");
+            } else {
+                console.log("[-] Connection failure!");
+            }
+        });
+        socket.on("pres_chosen", () => {
+            window.location.reload();
+        })
+    </script>
+    <title>Presentation is not yet chosen!</title>
+</head>
+<body>
+    <div>
+        <p>Presentation is being chosen by your teacher, please stand by.</p>
+    </div>
+</body>
+</html>
