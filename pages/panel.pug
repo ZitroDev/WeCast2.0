@@ -57,11 +57,13 @@ script.
   }
   getLoad((err) => {
     if(err instanceof Error){
+      window.location.pathname = "/login/"
       throw err;
     } else {
       setInterval(fLoad, 200);
       getNetStat((err) => {
         if(err instanceof Error){
+          window.location.pathname = "/login/"
           throw err;
         } else {
           setInterval(fNet, 5000);
