@@ -6,6 +6,14 @@
     "start": "node .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "bin": "index.js",
+  "pkg": {
+    "assets": [
+      "pages/**/*",
+      "static/**/*",
+      "hash.txt"
+    ]
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
