@@ -69,7 +69,7 @@ async function getUpload() {
 }
 
 var vv = false;  // Ultra verbose
-var v = true;    // Verbose
+var v = false;    // Verbose
 
 if(args.includes("-vv")){
     vv = true;
@@ -211,17 +211,35 @@ var pHash = "";
                 res.end(JSON.stringify({ err: "You're not an admin!" }));
             }
         });
+
+        app.post("/admint/uploadFile", (req, res) => {
+            var uid = req.body.uid;
+            var file = req.body.file;
+            var fileName = req.body.fileName;
+            v ? console.log(chalk`{blue [i]} Presentation upload request: {yellow requester UID}{gray :} {blue ${uid}}`) : "";
+            res.contentType("json");
+            if (uid == adminUID) {
+                fs.writeFileSync(path.resolve(__dirname, "pages", "assets", fileName+".html"), file);
+                res.end(JSON.stringify({ data: "OK" }));
+            } else {
+                res.end(JSON.stringify({ err: "You're not an admin!" }));
+            }
+        });
         
         app.post("/admint/setPres", (req, res) => {
             var uid = req.body.uid;
-            vv ? console.log(chalk`{blue [i]} Presentation change request: {yellow requester UID}{gray :} {blue ${uid}}`) : "";
+            v ? console.log(chalk`{blue [i]} Presentation change request: {yellow requester UID}{gray :} {blue ${uid}}`) : "";
             res.contentType("json");
             if(uid == adminUID){
-                curPres = req.body.presentation;
-                io.emit("pres_change");
-                io.emit("move", [0, 0]);
-                res.status(200).end(JSON.stringify([ "All OK!" ]));
-                v ? console.log(chalk`{blue [i]} Presentation set: {yellow presentation}{gray :} {blue ${curPres}}`) : "";
+                if(fs.existsSync(path.resolve(__dirname, "pages", "assets", req.body.presentation+".html"))){
+                    curPres = req.body.presentation;
+                    io.emit("pres_change");
+                    io.emit("move", [0, 0]);
+                    res.status(200).end(JSON.stringify([ "All OK!" ]));
+                    v ? console.log(chalk`{blue [i]} Presentation set: {yellow presentation}{gray :} {blue ${curPres}}`) : "";
+                } else {
+                    res.status(200).redirect("/");
+                }
             } else {
                 res.status(200).end(JSON.stringify({ err: "You're not an admin!" }));
             }

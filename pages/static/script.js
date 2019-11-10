@@ -25,8 +25,8 @@ function getLoad(res) {
         chartMem.update();
 
         chartDisk.data.datasets[0].data = [
-            data.disk,
-            100 - data.disk
+            100 - data.disk,
+            data.disk            
         ];
         chartDisk.update();
         return res();
@@ -113,15 +113,15 @@ var opts1 = {
         labels: [],
         datasets: [
             {
-                backgroundColor: "#bfd5f3",
-                borderColor: "#2c7be5",
+                backgroundColor: "#4d9aff",
+                borderColor: "#2e7ee6",
                 data: [],
                 label: 'Usage',
                 fill: "origin"
             }
         ]
     },
-    options: Chart.helpers.merge(options, {
+    options: {
         title: {
             text: "CPU usage",
             display: true
@@ -133,8 +133,48 @@ var opts1 = {
                     max: 100
                 }
             }]
+        },
+        maintainAspectRatio: false,
+        responsive: true,
+        spanGaps: false,
+        elements: {
+            line: {
+                tension: 0.5
+            }
+        },
+        plugins: {
+            filler: {
+                propagate: false
+            }
+        },
+        xAxes: [{
+            stacked: true,
+            ticks: {
+                fontColor: "white"
+            },
+            tickColor: "white",
+            gridColor: "white",
+            lineColor: "white"
+        }],
+        yAxes: [{
+            stacked: true,
+            gridLines: {
+                display: true,
+                color: "white"
+            },
+            ticks: {
+                fontColor: "white"
+            },
+            tickColor: "white",
+            gridColor: "white",
+            lineColor: "white"
+        }],
+        legend: {
+            labels: {
+                fontColor: "white"
+            }
         }
-    })
+    }
 };
 
 var opts2 = {
@@ -143,15 +183,15 @@ var opts2 = {
         labels: [],
         datasets: [
             {
-                backgroundColor: "#f4bec5",
-                borderColor: "#D7263D",
+                backgroundColor: "#ff4d65",
+                borderColor: "#d62b42",
                 data: [],
                 label: 'RAM',
                 fill: "origin"
             }
         ]
     },
-    options: Chart.helpers.merge(options, {
+    options: {
         title: {
             text: "RAM",
             display: true
@@ -163,8 +203,48 @@ var opts2 = {
                     max: 0
                 }
             }]
+        },
+        maintainAspectRatio: false,
+        responsive: true,
+        spanGaps: false,
+        elements: {
+            line: {
+                tension: 0.5
+            }
+        },
+        plugins: {
+            filler: {
+                propagate: false
+            }
+        },
+        xAxes: [{
+            stacked: true,
+            ticks: {
+                fontColor: "white"
+            },
+            tickColor: "white",
+            gridColor: "white",
+            lineColor: "white"
+        }],
+        yAxes: [{
+            stacked: true,
+            gridLines: {
+                display: true,
+                color: "white"
+            },
+            ticks: {
+                fontColor: "white"
+            },
+            tickColor: "white",
+            gridColor: "white",
+            lineColor: "white"
+        }],
+        legend: {
+            labels: {
+                fontColor: "white"
+            }
         }
-    })
+    }
 };
 
 var opts3 = {
@@ -173,22 +253,22 @@ var opts3 = {
         labels: [],
         datasets: [
             {
-                backgroundColor: "#eec3e8",
-                borderColor: "#CB48B7",
+                backgroundColor: "#ff73ea",
+                borderColor: "#cb48b7",
                 data: [],
                 label: 'Upload',
                 fill: "origin"
             },
             {
-                backgroundColor: "#caeac7",
-                borderColor: "#4CB944",
+                backgroundColor: "#88ff80",
+                borderColor: "#51ba4a",
                 data: [],
                 label: 'Download',
                 fill: "origin"
             }
         ]
     },
-    options: Chart.helpers.merge(options, {
+    options: {
         title: {
             text: "Network",
             display: true
@@ -201,8 +281,48 @@ var opts3 = {
                     min: 0,
                 }
             }]
+        },
+        maintainAspectRatio: false,
+        responsive: true,
+        spanGaps: false,
+        elements: {
+            line: {
+                tension: 0.5
+            }
+        },
+        plugins: {
+            filler: {
+                propagate: false
+            }
+        },
+        xAxes: [{
+            stacked: true,
+            ticks: {
+                fontColor: "white"
+            },
+            tickColor: "white",
+            gridColor: "white",
+            lineColor: "white"
+        }],
+        yAxes: [{
+            stacked: true,
+            gridLines: {
+                display: true,
+                color: "white"
+            },
+            ticks: {
+                fontColor: "white"
+            },
+            tickColor: "white",
+            gridColor: "white",
+            lineColor: "white"
+        }],
+        legend: {
+            labels: {
+                fontColor: "white"
+            }
         }
-    })
+    }
 };
 
 var opts4 = {

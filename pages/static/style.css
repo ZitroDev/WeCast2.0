@@ -1,3 +1,9 @@
+@font-face {
+    font-family: "Menlo Regular";
+    font-style: normal;
+    src: local("Menlo Regular"), url("/admint/Menlo-Regular.woff") format("woff");
+}
+
 .chart-rect {
     width: 30vw;
     height: 40vh;
@@ -25,29 +31,35 @@
 body {
     margin: 0;
     text-align: center;
-    background-color: #12263f;
+    background: linear-gradient(#00ccff, #00a9d3);
     color: white;
+    width: 100vw;
+    height: 100vh;
 }
 
-.el{
+.el {
     padding: 0 2vw;
 }
 
-.list-group{
+.list-group {
     max-height: 39vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
 }
 
-.list-group::-webkit-scrollbar{
+.list-group::-webkit-scrollbar {
     width: 1em;
     height: 3.5em;
 }
 
-.list-group::-webkit-scrollbar-thumb{
+.list-group::-webkit-scrollbar-thumb {
     background: #355861;
 }
 
-.mb-1{
+.mb-1 {
     margin-right: 1vw;
+}
+
+#sys {
+    font-family: "Menlo Regular"
 }

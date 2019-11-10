@@ -9,7 +9,7 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script>
-        const socket = io('http://localhost');
+        const socket = io( window.origin );
         socket.on("connect_success", (bool) => {
             if(bool){
                 console.log("[+] Connected successfully!");
@@ -17,7 +17,7 @@
                 console.log("[-] Connection failure!");
             }
         });
-        socket.on("pres_chosen", () => {
+        socket.on("pres_change", () => {
             window.location.reload();
         })
     </script>

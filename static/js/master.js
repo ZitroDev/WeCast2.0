@@ -1,4 +1,4 @@
-const socket = io('http://localhost');
+const socket = io( window.origin );
 var isAdmin = false;
 var adminMSG = "";
 

@@ -1,4 +1,5 @@
-const socket = io('http://localhost');
+const socket = io( window.origin );
+
 socket.on("connect_success", (bool) => {
     if(bool){
         console.log("[+] Connected successfully!");
@@ -6,12 +7,15 @@ socket.on("connect_success", (bool) => {
         console.log("[-] Connection failure!");
     }
 });
+
 socket.on("move", (url) => {
     Reveal.navigateTo.apply(this, url);
 })
+
 socket.on("pres_change", () => {
     window.location.reload();
 });
+
 window.onbeforeunload = function(){
     socket.emit("disconnect_user");
 }
