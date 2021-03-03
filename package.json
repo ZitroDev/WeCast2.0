@@ -29,7 +29,7 @@
     "javascript-time-ago": "^2.0.2",
     "network-speed": "^2.0.1",
     "node-os-utils": "^1.0.7",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "socket.io": "^2.2.0",
     "uuid-by-string": "^2.1.5"
   }
